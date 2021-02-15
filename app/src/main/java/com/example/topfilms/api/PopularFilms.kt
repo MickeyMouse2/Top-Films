@@ -11,22 +11,22 @@ import retrofit2.http.Query
 
 
 interface PopularFilms {
-  @GET("3/movie/popular")
-  fun searchUser(
-          @Query("api_key") q: String = "148a0f4f986f3ad1fb5ef21dc914d9dc",
-          @Query("language") language: String = "en-US",
-          @Query("page") page: Int = 1
-  ): Deferred<Response<UserResponse>>
+    @GET("3/movie/popular")
+    fun searchUser(
+            @Query("api_key") q: String = "148a0f4f986f3ad1fb5ef21dc914d9dc",
+            @Query("language") language: String = "en-US",
+            @Query("page") page: Int = 1
+    ): Deferred<Response<UserResponse>>
 
-  companion object Factory {
-    fun create(): PopularFilms {
-      val retrofit = Retrofit.Builder()
-              .baseUrl("https://api.themoviedb.org")
-              .addConverterFactory(GsonConverterFactory.create())
-              .addCallAdapterFactory(CoroutineCallAdapterFactory())
-              .build()
+    companion object Factory {
+        fun create(url: String): PopularFilms {
+            val retrofit = Retrofit.Builder()
+                    .baseUrl(url)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(CoroutineCallAdapterFactory())
+                    .build()
 
-      return retrofit.create(PopularFilms::class.java)
+            return retrofit.create(PopularFilms::class.java)
+        }
     }
-  }
 }

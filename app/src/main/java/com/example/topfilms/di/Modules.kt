@@ -12,9 +12,9 @@ import com.example.topfilms.ui.activities.MainViewModel
 import com.example.topfilms.util.bindViewModel
 
 val networkModule = Kodein.Module("network") {
-    constant("serverURL") with ""
+    constant("serverURL") with "https://api.themoviedb.org"
 
-    bind<PopularFilms>() with singleton { PopularFilms.create() }
+    bind<PopularFilms>() with singleton { PopularFilms.create(instance("serverURL")) }
     bind<DataManager>() with singleton { DataManager(instance()) }
     bind<NetworkManager>() with singleton { NetworkManager(instance()) }
 

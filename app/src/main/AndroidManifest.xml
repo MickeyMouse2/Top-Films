@@ -14,7 +14,7 @@
         android:name='.App'
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.example.topfilms.MainActivity">
+        <activity android:name="com.example.topfilms.ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

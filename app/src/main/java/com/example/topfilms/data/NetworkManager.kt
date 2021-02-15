@@ -15,7 +15,7 @@ class NetworkManager(private val gitResponse: PopularFilms) {
             errorMessage = "Error get user data"
     )
 
-    private suspend fun searchUserByFollowers(page: Int):  Result<UserResponse> {
+    private suspend fun searchUserByFollowers(page: Int): Result<UserResponse> {
         val response = gitResponse.searchUser(page = page).await()
         if (response.isSuccessful) {
             val body = response.body()

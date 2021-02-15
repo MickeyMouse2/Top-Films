@@ -11,10 +11,10 @@ class DataManager(private val networkManager: NetworkManager) {
     private val bgScope = CoroutineScope(Dispatchers.IO + parentJob)
 
     fun getUsersAsync(onSuccess: (UserResponse) -> Unit, onError: (String) -> Unit, page: Int) = bgScope.launch {
-            val result = networkManager.searchUsers(page)
-                when (result) {
-                    is Result.Success -> onSuccess(result.data)
-                    is Result.Error -> onError(result.exception.localizedMessage)
-                }.exhaustive
-        }
+        val result = networkManager.searchUsers(page)
+        when (result) {
+            is Result.Success -> onSuccess(result.data)
+            is Result.Error -> onError(result.exception.localizedMessage)
+        }.exhaustive
+    }
 }

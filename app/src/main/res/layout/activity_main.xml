@@ -5,14 +5,11 @@
 
   <data>
     <import type="androidx.lifecycle.LiveData"/>
-    <import type="com.example.topfilms.data.objects.UserResponse"/>
-    <import type="com.example.topfilms.ui.activities.MainViewModel"/>
-    <import type="com.example.topfilms.R" />
 
     <variable name="adapter"
-        type="com.example.topfilms.ui.adapters.RepoListAdapter"/>
+        type="com.example.topfilms.ui.adapters.ItemsAdapter"/>
 
-    <variable name="viewModel" type="MainViewModel"/>
+    <variable name="viewModel" type="com.example.topfilms.ui.activities.MainViewModel"/>
 
 
     <!--
@@ -30,7 +27,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/repoList"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:adapter="@{adapter}"
         app:adapter="@{adapter}"
         app:users="@{viewModel.users}"
@@ -40,10 +37,19 @@
         android:layout_height="0dp" android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
         app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
         tools:listitem="@layout/item_repo"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Internet Connection Error #404"
+        android:gravity="center"
+        android:onClick="@{() -> viewModel.OnClickError()}"
+        app:customVisibility="@{viewModel._internetConnection}"
+        android:textSize="40sp"/>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

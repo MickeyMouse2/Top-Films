@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:gravity="center"
-    android:padding="8dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <ImageView android:id="@+id/userAvatar"
-      android:layout_width="82dp"
-      android:layout_height="66dp"/>
-  <TextView android:id="@+id/userName"
-      android:layout_weight="1"
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent"/>
-</LinearLayout>
+    <data>
+        <variable
+            name="item"
+            type="com.example.topfilms.data.objects.ItemsItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/userAvatar"
+            android:layout_width="82dp"
+            app:imageUri="@{item.backdrop_path}"
+            android:layout_height="66dp" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@{item.title}" />
+    </LinearLayout>
+</layout>

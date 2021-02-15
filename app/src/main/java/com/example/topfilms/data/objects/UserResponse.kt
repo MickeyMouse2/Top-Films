@@ -5,4 +5,4 @@ import com.google.gson.annotations.SerializedName
 data class UserResponse(@SerializedName("total_pages")
                         val totalPages: Int = 0,
                         @SerializedName("results")
-                        val results: MutableList<ItemsItem> = mutableListOf())
+                        val results: MutableList<ItemsItemViewModel> = mutableListOf())

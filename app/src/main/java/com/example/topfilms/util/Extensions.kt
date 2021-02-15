@@ -20,7 +20,3 @@ inline fun <reified T : ViewModel> Kodein.Builder.bindViewModel(overrides: Boole
 inline fun <reified VM : ViewModel, T> T.viewModel(): Lazy<VM> where T : KodeinAware, T : AppCompatActivity {
     return lazy { ViewModelProviders.of(this, direct.instance()).get(VM::class.java) }
 }
-
-inline fun <reified VM : ViewModel, T> T.viewModel(): Lazy<VM> where T : KodeinAware, T : Fragment {
-    return lazy { ViewModelProviders.of(this, direct.instance()).get(VM::class.java) }
-}
