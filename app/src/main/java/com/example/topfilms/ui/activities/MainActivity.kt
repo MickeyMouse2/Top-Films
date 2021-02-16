@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), KodeinAware {
     private val userAdapter by lazy {
         ItemsAdapter(ArrayList(), (object : ItemsAdapter.Callback {
             override fun onShowLastItem() {
-
+                mainViewModel.updateData()
             }
         }))
     }

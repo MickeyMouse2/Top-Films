@@ -8,11 +8,10 @@ import com.bumptech.glide.Glide
 import com.example.topfilms.ui.adapters.ItemsAdapter
 import com.example.topfilms.data.objects.UserResponse
 
-@BindingAdapter(value = ["app:users", "app:callBacks", "app:adapter"], requireAll = true)
-fun setItems(view: androidx.recyclerview.widget.RecyclerView, items: UserResponse?, callBack: ItemsAdapter.Callback?, adapter: ItemsAdapter) {
+@BindingAdapter(value = ["app:users", "app:adapter"], requireAll = true)
+fun setItems(view: androidx.recyclerview.widget.RecyclerView, items: UserResponse?, adapter: ItemsAdapter) {
     if (items != null) {
         adapter.data = items.results
-        adapter.callback = callBack!!
         adapter.notifyDataSetChanged()
     }
 }

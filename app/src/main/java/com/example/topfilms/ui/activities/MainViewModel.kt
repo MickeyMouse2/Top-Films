@@ -12,21 +12,17 @@ import com.example.topfilms.data.DataManager
 import com.example.topfilms.data.objects.ItemsItemViewModel
 import com.example.topfilms.ui.adapters.ItemsAdapter
 
-class MainViewModel(var dataManager: DataManager) : ViewModel(), ItemsAdapter.Callback {
+class MainViewModel(var dataManager: DataManager) : ViewModel(){
 
     private val _users = MutableLiveData<UserResponse>()
     public var _internetConnection: ObservableField<Boolean> = ObservableField();
-    private val _callback = MutableLiveData<ItemsAdapter.Callback>()
     private val listResponse = mutableListOf<ItemsItemViewModel>()
     private var currentPage = 1
     val users: LiveData<UserResponse>
         get() = _users
-    val callback: LiveData<ItemsAdapter.Callback>
-        get() = _callback
 
 
     init {
-        _callback.postValue(this)
         response()
     }
 
@@ -49,7 +45,7 @@ class MainViewModel(var dataManager: DataManager) : ViewModel(), ItemsAdapter.Ca
         response()
     }
 
-    override fun onShowLastItem() {
+    fun updateData() {
         if (currentPage <= _users.value!!.totalPages) {
             currentPage += 1
             dataManager.getUsersAsync(
